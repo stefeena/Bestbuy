@@ -30,7 +30,7 @@
 
 ### Project Overview  
 
-As a newly appointed *Full-Stack Cloud-Native Developer* at Best Buy, a leading electronics retailer, the task is to design, build, and deploy a demo *cloud-native application* for Best Buy's online store. The application architecture draws inspiration from the *Algonquin Pet Store (On Steroids)* design, with a notable modification: the *Order Queue Service* will utilize a managed backing service such as Azure Service Bus instead of an owned solution like RabbitMQ. The project will leverage a Kubernetes cluster for deployment and aims to showcase the functionality and scalability of a cloud-native application in a retail environment.  
+As a newly appointed Full-Stack Cloud-Native Developer at Best Buy, a leading electronics retailer, your assignment is to design, develop, and deploy a demo cloud-native application for the company’s online store. The application’s architecture will take inspiration from the Algonquin Pet Store (On Steroids) design, with a key change: the Order Queue Service will utilize a managed solution such as Azure Service Bus instead of a self-hosted option like RabbitMQ. The project will be deployed on a Kubernetes cluster and aims to demonstrate the functionality and scalability of a cloud-native retail application.  
 
 ## *Assignment Objectives*  
 - Implement a cloud-native application using microservices architecture.   
@@ -46,13 +46,14 @@ The *Best Buy App* include the following components:
 
 | Service              | Description                                                                 | Repo                                      |
 |----------------------|-----------------------------------------------------------------------------|-------------------------------------------|
-| *Store-Front*      | Customer-facing app for browsing and placing orders.                         | [Link](https://github.com/your-repo-link) |
-| *Store-Admin*      | Employee-facing app for managing products and viewing orders.                | [Link](https://github.com/your-repo-link) |
-| *Order-Service*    | Handles order creation and sends data to the managed order queue.           | [Link](https://github.com/your-repo-link) |
-| *Product-Service*  | Handles CRUD operations for product data.                                    | [Link](https://github.com/your-repo-link) |
-| *Makeline-Service* | Processes and completes orders by reading from the order queue.             | [Link](https://github.com/your-repo-link) |
-| *AI-Service*       | Generates product descriptions and images using GPT-4 and DALL-E models.    | [Link](https://github.com/your-repo-link) |
-| *Database*         | MongoDB for persisting order and product data.                              | [Link](https://github.com/your-repo-link) |
+| *Store-Front*      | Customer-facing app for browsing and placing orders.                         | [Link](https://github.com/stefeena/bestbuystorefront) |
+| *Store-Admin*      | Employee-facing app for managing products and viewing orders.                | [Link](https://github.com/stefeena/bestbuystoreadmin) |
+| *Order-Service*    | Handles order creation and sends data to the managed order queue.           | [Link](https://github.com/stefeena/bestbuyorder) |
+| *Product-Service*  | Handles CRUD operations for product data.                                    | [Link](https://github.com/stefeena/bestbuyproduct) |
+| *Makeline-Service* | Processes and completes orders by reading from the order queue.             | [Link](https://github.com/stefeena/bestbuymakeline) |
+https://github.com/stefeena/bestbuyai) |
+| *AI-Service*       | Generates product descriptions and images using GPT-4 and DALL-E models.    | [Link](https://github.com/stefeena/bestbuyai) |
+
 
 ---
 
@@ -60,12 +61,12 @@ The *Best Buy App* include the following components:
 
 | *Service*         | *Docker Hub Link*                     |  
 |---------------------|-----------------------------------------|  
-| Store-Front         | [Click Here](https://dockerhub.com/link1) |  
-| Store-Admin         | [Click Here](https://dockerhub.com/link2) |  
-| Order-Service       | [Click Here](https://dockerhub.com/link3) |  
-| Product-Service     | [Click Here](https://dockerhub.com/link4) |  
-| AI-Service          | [Click Here](https://dockerhub.com/link5) |  
-| Makeline-Service    | [Click Here](https://dockerhub.com/link6) |  
+| Store-Front         | [Click Here](https://hub.docker.com/repository/docker/stefeena/store-front-l8/general) |  
+| Store-Admin         | [Click Here](https://hub.docker.com/repository/docker/stefeena/store-admin-l8/general) |  
+| Order-Service       | [Click Here](https://hub.docker.com/repository/docker/stefeena/order-service-l8/general) |  
+| Product-Service     | [Click Here](https://hub.docker.com/repository/docker/stefeena/product-service-l8/general) |  
+| AI-Service          | [Click Here](https://hub.docker.com/repository/docker/stefeena/ai-service-l8/general) |  
+| Makeline-Service    | [Click Here](https://hub.docker.com/repository/docker/stefeena/makeline-service-l8/general) |  
 
 
 
@@ -199,9 +200,6 @@ bash
 npm install
 npm run serve
 
-
-- ![Arch](images/15UIfromazure.png)
-- Figure shows the UI Best Buy Website
 
 This ensures the Store-Front is running properly and the changes are applied.
 
@@ -522,22 +520,22 @@ In the aps-all-in-one.yml file, the Docker images are replaced with the respecti
 yaml
 containers:
   - name: product-service
-    image: thoufeekx/product-service-l8:latest # Custom product service image
+    image: stefeena/product-service-l8:latest # Custom product service image
 
   - name: store-front
-    image: thoufeekx/store-front-l8:latest # Custom store front image
+    image: stefeena/store-front-l8:latest # Custom store front image
 
   - name: store-admin
-    image: thoufeekx/store-admin-l8:latest # Custom store admin image
+    image: stefeena/store-admin-l8:latest # Custom store admin image
 
   - name: order-service
-    image: thoufeekx/order-service-l8:latest # Custom order service image
+    image: stefeena/order-service-l8:latest # Custom order service image
 
   - name: makeline-service
-    image: thoufeekx/makeline-service-l8:latest # Custom makeline service image
+    image: stefeena/makeline-service-l8:latest # Custom makeline service image
 
   - name: ai-service
-    image: thoufeekx/ai-service-l8:latest # Custom AI service image
+    image: stefeena/ai-service-l8:latest # Custom AI service image
     env:
       - name: USE_AZURE_OPENAI # Set to True for Azure OpenAI, False for Public OpenAI
         value: "True"
